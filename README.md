@@ -1,4 +1,4 @@
-## EAT
+## Alth
 
 #Restful Api
 
@@ -62,123 +62,37 @@
     
 
 
-* POST /addFood (음식 추가)
+* POST /addQuestion ( 문제 추기 )
 
 > Params
 
-    foodName : {type: String, required: true} // 음식 이름 (ex. 튼튼밀크)
- 
-    foodType : {type: String, required: true} // 음식 종류 (ex. 유제품)
+    title: {type: String} // 문제 제목
 
-    foodDate : {type: Number, required: true} // 유통기한
+    content: {type : String} // 문제 내용
 
-    nowDate : {type : Number, required: true} // 현재날짜
-
-    userToken : {type: String, required: true} //유저토큰
+    answer : {type: String} // 문제 정답 
 
 > Response
 
-    HTTP 200 : { list: 
-
-        foodName : {type: String, required: true} // 음식 이름 (ex. 튼튼밀크)
- 
-        foodType : {type: String, required: true} // 음식 종류 (ex. 유제품)
-
-        foodDate : {type: Number, required: true} // 유통기한
-
-        nowDate : {type : Number, required: true} // 현재날짜
-
-     } 
-
-    HTTP 500 : { message : "ERR!"}
-    
+    HTTP 200 :  { message : "Success"}
 
 
-
-* POST /readFood (음식 읽어오기)
+* POST /readQuestion ( 문제 불러오기 )
 
 > Params
 
-     userToken :   {type: String} // 유저토큰
-    
-> Response (ex. NFCtRfG89ei7VYMyM4hsAYp라는 유저토큰을 넣었을때)
 
-    HTTP 200 : { message : "success!"}
-    {
-        foodName : {type: String} // 음식 이름 (ex. 튼튼밀크)
- 
-        foodType : {type: String} // 음식 종류 (ex. 유제품)
+> Response
 
-        foodDate : {type: Number} // 유통기한
+    HTTP 200 :  {
+        title: {type: String} // 문제 제목
 
-        nowDate : {type : Number} // 현재날짜
-        
-        isExpired : {type : Boolean} // 유통기한 지난음식 (과거)
+        content: {type : String} // 문제 내용
 
-        token : {type : String} // 현재날짜
+        answer : {type: String} // 문제 정답 (추후 solve 추가 예정)
     }
 
-    HTTP 500 : { message : "ERR!"}
+    HTTP 404 : { message : "User Not Found!"}
 
-
-* POST /finishFood (음식 유통기한 지날 시)
-
-> Params
-
-    userToken :   {type: String, require: true} // 유저토큰
-
-    token :   {type: String, require:true} // 음식토큰
-    
-> Response 
-
-    HTTP 200 : { message : "success!"}
-
-    HTTP 500 : { message : "ERR!"}
-
-
-* POST /delFood (음식 삭제)
-
-> Params
-
-    userToken :   {type: String, require: true} // 유저토큰
-
-    token :   {type: String, require:true} // 음식토큰
-    
-> Response 
-
-    HTTP 200 : { message : "success!"}
-
-    HTTP 500 : { message : "ERR!"}
-
- 
-* POST /food/search (음식 검색)
-
-> Params
-
-    userToken :   {type: String, require: true} // 유저토큰
-
-    foodName :   {type: String, require:true} // 음식토큰
-    
-> Response 
-
-
-    HTTP 200 : { message : "success!"}
-    {
-        foodName : {type: String} // 음식 이름 (ex. 튼튼밀크)
- 
-        foodType : {type: String} // 음식 종류 (ex. 유제품)
-
-        foodDate : {type: Number} // 유통기한
-
-        nowDate : {type : Number} // 현재날짜
-        
-        isExpired : {type : Boolean} // 유통기한 지난음식 (과거)
-
-        token : {type : String} // 현재날짜
-    }
-
-    HTTP 500 : { message : "ERR!"}
-
-   
 
 

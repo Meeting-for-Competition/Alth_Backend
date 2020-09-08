@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const rndstring = require('randomstring');
 const path = require('path');
-const multer = require('multer');
 const cors = require('cors');
 const schedule = require('node-schedule');
 
@@ -16,7 +15,7 @@ require('./mongo');
 
 
 require('./routes/auth')(app,Users,rndstring);
-require('./routes/foodCheck')(app, Food, rndstring, schedule);
+require('./routes/question')(app, Question, rndstring, schedule);
 let port = 6101;
 
 app.listen(process.env.PORT || 3001, function(){
